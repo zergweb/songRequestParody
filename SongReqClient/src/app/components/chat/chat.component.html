@@ -1,0 +1,26 @@
+<mat-card class="chat">
+  <mat-card-header>
+    <mat-card-title>Людей онлайн:</mat-card-title>
+
+
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div class="messages">
+      <p *ngFor="let mess of chat.MessageList;">
+        {{mess.Message}}
+      </p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="chat-controls">
+      <mat-form-field appearance="outline" class="message-area">
+        <mat-label>Message area</mat-label>
+        <textarea matInput [(ngModel)]="CurrentMessage"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="message-btn" (click)="SendMessage()" >Send</button>
+    </div>
+    
+  </mat-card-content>
+</mat-card>
+
+

@@ -1,0 +1,25 @@
+.wrapper
+{
+  display:flex;
+
+  
+  flex-direction:column
+}
+.chat{
+  width:400px;
+}
+.messages{
+  height:600px;
+  overflow-y:scroll;
+}
+.message-area{
+  width:100%;
+}
+.message-btn{
+
+  width:100%;
+}
+.chat-controls{
+  display:flex;
+  flex-direction:column;
+}

@@ -1,0 +1,9 @@
+/*.wrapper {
+  display: flex;
+  padding: 0 100px;
+  justify-content: center;
+  flex-direction: column
+}*/
+.item{
+  width:300px;
+}
