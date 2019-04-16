@@ -11,7 +11,8 @@ import { SongRequestComponent} from './components/song-request/song-request.comp
 import { ChatService } from './services/ChatService';
 import { SignalRService } from './services/SignalRService';
 import { NotificationService } from './services/NotificationService';
-import { SongRequestService} from './services/SongRequesrService';
+import { SongRequestService } from './services/SongRequesrService';
+import {LogService } from './services/LogService';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { SongRequestService} from './services/SongRequesrService';
   providers: [ChatService,
     SignalRService,
     NotificationService,
-    SongRequestService
+    SongRequestService,
+    LogService
   ],
   bootstrap: [AppComponent]
 })

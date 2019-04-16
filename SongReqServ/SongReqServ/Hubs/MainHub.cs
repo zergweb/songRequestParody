@@ -19,15 +19,17 @@ namespace SongReqServ.Hubs
            await Clients.All.SendAsync("messageReceived", username, message);
         }
         public async Task SongRequest(string url)
-        {
-            
+        {           
             songManager.AddSong(url, Clients.Caller).Start();
             await SendNotification("Запрос в обработке");
-
         }
         private Task SendNotification(String mess)
         {          
-              return Clients.Caller.SendAsync("onNotification", mess);         
+             return Clients.Caller.SendAsync("onNotification", mess);         
+        }
+        public Task LogMessageMailing(String mess)
+        {           
+            return Clients.All.SendAsync("onLogMessage", mess);
         }
     }
 }

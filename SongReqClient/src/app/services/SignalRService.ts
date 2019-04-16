@@ -1,7 +1,6 @@
 import { Injectable, Predicate } from '@angular/core';
 import { ChatMessage } from '../model/ChatMessage';
 import * as signalR from "@aspnet/signalr";
-//import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class SignalRService {
   private serv = "https://localhost:44305/";

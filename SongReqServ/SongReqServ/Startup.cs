@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SongReqServ.Services.SongReq;
 using SongReqServ.Hubs;
+using SongReqServ.Logger;
+using Microsoft.AspNetCore.SignalR;
 namespace SongReqServ
 {
     public class Startup
@@ -42,7 +44,7 @@ namespace SongReqServ
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -52,14 +54,19 @@ namespace SongReqServ
             {
                 app.UseHsts();
             }
+           
+            //GlobalHost.ConnectionManager.GetHubContext<StockTickerHub>())
+            
             app.UseCors("AllowAll");
             app.UseHttpsRedirection();
             app.UseSignalR(options =>
             {
                 options.MapHub<MainHub>("/hub");
+                
             });
             app.UseMvc();
             app.UseStaticFiles();
+            loggerFactory.WSLogger(serviceProvider.GetService<IHubContext<MainHub>>());
 
         }
     }

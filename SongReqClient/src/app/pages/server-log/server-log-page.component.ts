@@ -1,27 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-//import { StoreDataService } from '../../services/store.service'; 
-//import { Product} from '../../model/Product';
+import { LogService} from '../../services/LogService';
 @Component({
   selector: 'server-log-page',
   templateUrl: './server-log-page.component.html',
   styleUrls: ['./server-log-page.component.css']
 })
 export class ServerLogPageComponent implements OnInit {
-  //Products: Product[]=[];
+  public Log: String[] = [];
   constructor(
-   // private store:StoreDataService
-  ) { }
+    public log:LogService
+  ) {
+    this.Log = log.Log;
+  }
 
   ngOnInit() {
-   // this.Products = this.store.MyProductList;
+ 
   }
-  public RemoveProduct(id: number) {
-   // this.store.removeProduct(id);
-  }
-  public getTestData() {
-    //this.store.getTest2().subscribe(
-    //  (r) => { console.log(r); },
-    //  (e) => { console.log(e); },
-    //);
+  public ClearLog() {
+    this.log.ClearLog();
   }
 }
