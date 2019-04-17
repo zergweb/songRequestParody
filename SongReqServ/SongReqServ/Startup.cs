@@ -22,10 +22,7 @@ namespace SongReqServ
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -40,10 +37,8 @@ namespace SongReqServ
                 });
             });
             services.AddSignalR();
-            services.AddTransient<SongReqManager>();
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            services.AddSingleton<SongReqManager>();
+        }      
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
@@ -53,21 +48,16 @@ namespace SongReqServ
             else
             {
                 app.UseHsts();
-            }
-           
-            //GlobalHost.ConnectionManager.GetHubContext<StockTickerHub>())
-            
+            }           
             app.UseCors("AllowAll");
             app.UseHttpsRedirection();
             app.UseSignalR(options =>
             {
-                options.MapHub<MainHub>("/hub");
-                
+                options.MapHub<MainHub>("/hub");                
             });
             app.UseMvc();
             app.UseStaticFiles();
             loggerFactory.WSLogger(serviceProvider.GetService<IHubContext<MainHub>>());
-
         }
     }
 }

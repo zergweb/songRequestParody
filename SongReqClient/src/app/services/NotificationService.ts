@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material';
 export class NotificationService {
   constructor(private signalR: SignalRService, private snackBar: MatSnackBar) {
     signalR.connection.on("onNotification", (mess:string) => {
-      this.ShowNotification(mess);
+     // this.ShowNotification(mess);
       snackBar.open(mess," ", {
         duration: 3000
       });
@@ -15,4 +15,7 @@ export class NotificationService {
   public ShowNotification(mess: String) {
     console.log(mess);   
   }
+  //public UpdateState() {
+  //  this.signalR.connection.send("UpdateState");
+  //}
 }

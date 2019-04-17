@@ -8,7 +8,7 @@ namespace SongReqServ.Services.SongReq
     public class Track
     {
         public int Id { get; set; }
-        public String Name { get; set; }
-        public String Url { get; set; }
+        public String title { get; set; }
+        public String link { get; set; }
     }
 }

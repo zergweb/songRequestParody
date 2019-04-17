@@ -17,10 +17,10 @@ namespace SongReqServ.Controllers
         {
             sm = _sm;
         }
-        //[HttpGet("/songreq")]
-        //public ActionResult Get(String url)
+        //[HttpGet("/update")]
+        //public ActionResult Get()
         //{
-        //    sm.AddSong(url);
+        //    sm.
         //    return Ok();
         //}
     }

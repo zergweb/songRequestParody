@@ -7,25 +7,31 @@ import { AppComponent } from './app.component';
 import {MainPageComponent } from './pages/main-page/main-page.component';
 import { ServerLogPageComponent } from './pages/server-log/server-log-page.component';
 import { ChatComponent } from './components/chat/chat.component';
-import { SongRequestComponent} from './components/song-request/song-request.component';
+import { SongRequestComponent } from './components/song-request/song-request.component';
+import { PlayerComponent} from './components/player/player.component';
 import { ChatService } from './services/ChatService';
 import { SignalRService } from './services/SignalRService';
 import { NotificationService } from './services/NotificationService';
 import { SongRequestService } from './services/SongRequesrService';
-import {LogService } from './services/LogService';
+import { LogService } from './services/LogService';
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import {FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     ServerLogPageComponent,
     ChatComponent,
-    SongRequestComponent
+    SongRequestComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    FormsModule 
+    FormsModule,
+    NgxAudioPlayerModule,
+    FontAwesomeModule 
   ],
   providers: [ChatService,
     SignalRService,

@@ -20,8 +20,12 @@ namespace SongReqServ.Hubs
         }
         public async Task SongRequest(string url)
         {           
-            songManager.AddSong(url, Clients.Caller).Start();
+            songManager.AddSong(url,Clients).Start();
             await SendNotification("Запрос в обработке");
+        }
+        public async Task UpdateState()
+        {
+           await songManager.UpdatePlayList(Clients);
         }
         private Task SendNotification(String mess)
         {          
